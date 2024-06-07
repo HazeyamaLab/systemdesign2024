@@ -1,0 +1,15 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-Systemdesign2024Application<hazelab-systemdesign2024>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.example.systemdesign2024.Systemdesign2024Application",
+      "projectName": "hazelab-systemdesign2024",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env",
+      "preLaunchTask": "gradle: build"
+    }
+  ]
+}
