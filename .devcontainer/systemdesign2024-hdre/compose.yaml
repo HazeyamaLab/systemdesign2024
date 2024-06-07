@@ -1,0 +1,26 @@
+name: systemdesign2024-hdre
+
+services:
+  devcontainer:
+    image: emerald.u-gakugei.ac.jp:5000/devcontainers-java:1-21-bullseye
+    volumes:
+      - ../../..:/workspaces:cached
+    depends_on:
+      - mysql
+      - adminer
+  mysql:
+    image: emerald.u-gakugei.ac.jp:5000/mysql:latest
+    environment:
+      - TZ=Asia/Tokyo
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=database
+      - MYSQL_USER=mysql
+      - MYSQL_PASSWORD=password
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --key_buffer_size=1048576 --myisam_sort_buffer_size=1048576 --innodb_buffer_pool_size=5242880 --innodb_log_buffer_size=1048576 --innodb_log_file_size=4194304 --max-connections=24 --open_files_limit=1024 --table_definition_cache=400 --table_open_cache=256
+    volumes:
+      - mysql_data:/var/lib/mysql
+  adminer:
+    image: emerald.u-gakugei.ac.jp:5000/adminer:latest
+
+volumes:
+  mysql_data:

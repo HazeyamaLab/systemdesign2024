@@ -1,0 +1,9 @@
+.message {
+  padding: 1em;
+  border: 2px #0000ff solid;
+}
+
+.error {
+  padding: 1em;
+  border: 2px #ff0000 solid;
+}
