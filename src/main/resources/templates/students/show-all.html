@@ -14,7 +14,7 @@
   <div class="error" th:if="${error != null}">エラー: [[${error}]]</div>
   <div class="message" th:if="${messageFromPrev != null}">メッセージ: [[${messageFromPrev}]]</div>
   <div class="error" th:if="${errorFromPrev != null}">エラー: [[${errorFromPrev}]]</div>
-  <h2>学生一覧（[[${students.size()}]]件）</h2>
+  <h2>学生一覧（[[${students != null ? students.size() : "-"}]]件）</h2>
   <table th:if="${students != null}">
     <thead>
       <tr>
