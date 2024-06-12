@@ -65,7 +65,7 @@
 3. 開発コンテナーを作成します。
     1. `⇧⌘P`を押してコマンドパレットを開き、`Dev Containers: Clone Repository in Container Volume`と入力して`Enter`キーを押します（途中まで入力して同名の項目を選択しても構いません）。
     2. 入力欄に`https://github.com/HazeyamaLab/systemdesign2024`と入力して`Enter`キーを押します。
-    3. 開発コンテナーの作成が完了するまで約1分かかります。作成に成功すると自動的に開発コンテナーに接続され、画面左下のリモートボタンに`Dev Container: systemdesign2024`と表示されます。
+    3. 開発コンテナーの作成が完了するまで待ちます。開発コンテナーの作成には数分間かかることがあります。作成に成功すると自動的に開発コンテナーに接続され、画面左下のリモートボタンに`Dev Container: systemdesign2024`と表示されます。
 
 ## 開発環境の使用方法
 
