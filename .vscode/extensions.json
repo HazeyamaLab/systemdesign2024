@@ -1,5 +1,6 @@
 {
   "recommendations": [
+    "samuel-weinhardt.vscode-jsp-lang",
     "vscjava.vscode-java-pack"
   ]
 }

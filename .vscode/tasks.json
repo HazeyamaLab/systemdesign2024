@@ -2,9 +2,15 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "gradle: build",
+      "label": "gradle: appStartDebug",
       "type": "shell",
-      "command": "${workspaceFolder}/gradlew build"
-    }
+      "command": "${workspaceFolder}/gradlew appStartDebug",
+      "isBackground": true
+    },
+    {
+      "label": "gradle: appStop",
+      "type": "shell",
+      "command": "${workspaceFolder}/gradlew appStop"
+    },
   ]
 }
