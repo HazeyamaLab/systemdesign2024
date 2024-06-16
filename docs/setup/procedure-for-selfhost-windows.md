@@ -89,8 +89,11 @@ Docker Desktopを起動してからVSCodeを開発コンテナーに接続しま
 1. Docker DesktopとVSCodeを起動します。
 2. VSCodeの画面左側の`Remote Explorer`（`リモート エクスプローラー`・`🖥️`のようなアイコン）をクリックして、リモートエクスプローラーを表示します。
 3. `Remote (Tunnel/SSH)`（`リモート (トンネル/SSH)`）の一覧が表示されている場合は、プルダウンで`Dev Containers`（`開発コンテナー`）の一覧を表示するように切り替えます。
-4. 開発コンテナーの一覧から`systemdesign2024_devcontainer-devcontainer-1`を選び、`→`（`Open Container in Current Window`、`現在のウィンドウのコンテナーで開く`）または`Open Container in New Window`（`新しいウィンドウのコンテナーで開く`）をクリックします。
+4. `Dev Containers`（`開発コンテナー`）の一覧から`systemdesign2024_devcontainer-devcontainer-1`を選び、`→`（`Open Container in Current Window`、`現在のウィンドウのコンテナーで開く`）または`Open Container in New Window`（`新しいウィンドウのコンテナーで開く`）をクリックします。
 5. 開発コンテナーへの接続に成功すると、画面左下のリモートボタンに`Dev Container: systemdesign2024`と表示されます。
+6. `mysql`コンテナーや`adminer`コンテナーの機能を利用する場合は、`Other Containers`の一覧の`systemdesign2024_devcontainer-mysql-1`および`systemdesign2024_devcontainer-adminer-1`が起動していることを確認します。
+    - 起動している場合は`▶️`のようなアイコンが付いています。
+    - 起動していない場合は右クリック→`Start Container`（`コンテナーの開始`）をクリックします。
 
 ### Docker Desktopを起動しているのに開発コンテナーにVSCodeを接続できない
 
