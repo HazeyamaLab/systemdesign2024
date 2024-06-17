@@ -6,20 +6,21 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 public class DataSourceHolder {
-  private static HikariConfig hikariConfig;
-  private static DataSource dataSource;
+  private static HikariConfig _hikariConfig;
+  private static DataSource _dataSource;
+
+  public final DataSource dataSource;
 
   public DataSourceHolder() {
-    if (DataSourceHolder.hikariConfig == null) {
-      DataSourceHolder.hikariConfig = new HikariConfig(
+    if (DataSourceHolder._hikariConfig == null) {
+      DataSourceHolder._hikariConfig = new HikariConfig(
           this.getClass().getClassLoader().getResource("dataSource.properties").getPath());
     }
-    if (DataSourceHolder.dataSource == null) {
-      dataSource = new HikariDataSource(DataSourceHolder.hikariConfig);
-    }
-  }
 
-  public DataSource getDataSource() {
-    return DataSourceHolder.dataSource;
+    if (DataSourceHolder._dataSource == null) {
+      DataSourceHolder._dataSource = new HikariDataSource(DataSourceHolder._hikariConfig);
+    }
+
+    this.dataSource = DataSourceHolder._dataSource;
   }
 }
