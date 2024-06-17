@@ -27,12 +27,12 @@ public class CreateStudentServlet extends HttpServlet {
     // すべてのサーブレットのすべてのメソッドにこの記述が必要。
     req.setCharacterEncoding("UTF-8");
 
-    // リクエスト時のパラメータを得て、コントローラへの入力用のオブジェクトにまとめる。
+    // リクエストに含まれるパラメータの値を得て、コントローラへの入力用のオブジェクトにまとめる。
     String id = req.getParameter("id");
     String name = req.getParameter("name");
     CreateStudentInput createStudentInput = new CreateStudentInput(id, name);
 
-    // モデル層の窓口である、ECBパターンにおけるコントローラをインスタンス化する。
+    // ビジネスロジック層の窓口である、ECBパターンにおけるコントロールをインスタンス化する。
     CreateStudent control = new CreateStudent();
 
     try {
@@ -42,21 +42,21 @@ public class CreateStudentServlet extends HttpServlet {
 
       // `<コンテキストパス>/students/show-all`に処理結果のメッセージを含むクエリパラメータを付けたURLにアクセスしてもらうように、レスポンスを返す。
       // レスポンスを受け取ったブラウザはこのURLに自動的にアクセスする。
-      // クエリパラメータの値はapplication/x-www-form-urlencoded（いわゆるパーセントエンコーディング）で符号化されている必要があるため、URLEncoder.encodeメソッドを用いて符号化の処理を行っている。
+      // クエリパラメータの値はapplication/x-www-form-urlencoded（いわゆるパーセントエンコーディング）で符号化されている必要があるため、`URLEncoder.encode`メソッドを用いて符号化の処理を行っている。
       resp.sendRedirect(req.getContextPath()
           + "/students/show-all?messageFromPrev=" + URLEncoder.encode(createStudentResult.message, "UTF-8"));
 
     } catch (Failure failure) {
 
       // コントローラは`Failure`型の例外を投げるかもしれない。
-      // 例外が投げられた場合はその時点で`try`節の文の実行は停止され、`catch`節の各文が実行されることになる。
+      // 例外が投げられた場合はその時点で`try`句の文の実行は停止され、`catch`句の各文が実行されることになる。
 
       // 例外をログに出力する。
       req.getServletContext().log(failure.getMessage(), failure);
 
       // `<コンテキストパス>/students/show-all`に例外のメッセージを含むクエリパラメータを付けたURLにアクセスしてもらうように、レスポンスを返す。
       // レスポンスを受け取ったブラウザはこのURLに自動的にアクセスする。
-      // クエリパラメータの値はapplication/x-www-form-urlencoded（いわゆるパーセントエンコーディング）で符号化されている必要があるため、URLEncoder.encodeメソッドを用いて符号化の処理を行っている。
+      // クエリパラメータの値はapplication/x-www-form-urlencoded（いわゆるパーセントエンコーディング）で符号化されている必要があるため、`URLEncoder.encode`メソッドを用いて符号化の処理を行っている。
       resp.sendRedirect(req.getContextPath()
           + "/students/show-all?errorFromPrev=" + URLEncoder.encode(failure.getMessage(), "UTF-8")
           + "&lastInputId=" + URLEncoder.encode(id, "UTF-8")

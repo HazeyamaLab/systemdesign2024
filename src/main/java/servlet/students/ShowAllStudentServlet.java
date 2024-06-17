@@ -25,25 +25,28 @@ public class ShowAllStudentServlet extends HttpServlet {
     // すべてのサーブレットのすべてのメソッドにこの記述が必要。
     req.setCharacterEncoding("UTF-8");
 
-    // モデル層の窓口である、ECBパターンにおけるコントローラをインスタンス化する。
+    // ビジネスロジック層の窓口である、ECBパターンにおけるコントロールをインスタンス化する。
     GetAllStudent control = new GetAllStudent();
 
     try {
+
       // コントローラの処理を実行し、その結果を得る。
       GetAllStudentResult getAllStudentResult = control.execute();
 
       // 得た結果をリクエストスコープの属性に割り当てる。
-      req.setAttribute("message", getAllStudentResult.message);
       req.setAttribute("students", getAllStudentResult.students);
+
     } catch (Failure failure) {
+
       // コントローラは`Failure`型の例外を投げるかもしれない。
-      // 例外が投げられた場合はその時点で`try`節の文の実行は停止され、`catch`節の各文が実行されることになる。
+      // 例外が投げられた場合はその時点で`try`句の文の実行は停止され、`catch`句の各文が実行されることになる。
 
       // 例外をログに出力する。
       req.getServletContext().log(failure.getMessage(), failure);
 
       // 例外のメッセージをリクエストスコープの属性に割り当てる。
       req.setAttribute("error", failure.getMessage());
+
     }
 
     // 本来はサーブレットからレスポンスを返すが、今回はJSPを利用してレスポンスをHTML文書として返す。
