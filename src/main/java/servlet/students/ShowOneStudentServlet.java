@@ -2,8 +2,9 @@ package servlet.students;
 
 import java.io.IOException;
 
-import control.students.GetAllStudent;
-import control.students.GetAllStudentResult;
+import control.students.GetOneStudent;
+import control.students.GetOneStudentInput;
+import control.students.GetOneStudentResult;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,11 +13,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import modelUtil.Failure;
 
 // サーブレットは`HttpServlet`のサブクラスとして実装し、`@WebServlet`アノテーションのvalue属性でどのパスに対するリクエストを処理するのかを指定する。
-// この場合、`<コンテキストパス>/students/show-all`に対するリクエストを処理するサーブレットになる。
-@WebServlet(value = { "/students/show-all" })
-public class ShowAllStudentServlet extends HttpServlet {
-
-  // `<コンテキストパス>/students/show-all`に対するGETリクエストを処理する`doGet`メソッドを実装する。
+// この場合、`<コンテキストパス>/students/show-one`に対するリクエストを処理するサーブレットになる。
+@WebServlet(value = { "/students/show-one" })
+public class ShowOneStudentServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -25,16 +24,19 @@ public class ShowAllStudentServlet extends HttpServlet {
     // すべてのサーブレットのすべてのメソッドにこの記述が必要。
     req.setCharacterEncoding("UTF-8");
 
+    String id = req.getParameter("id");
+    GetOneStudentInput getOneStudentInput = new GetOneStudentInput(id);
+
     // ビジネスロジック層の窓口である、ECBパターンにおけるコントロールをインスタンス化する。
-    GetAllStudent control = new GetAllStudent();
+    GetOneStudent control = new GetOneStudent();
 
     try {
 
-      // コントローラの処理を実行し、その結果を得る。
-      GetAllStudentResult getAllStudentResult = control.execute();
+      // コントローラに入力用のオブジェクトを渡して処理を実行し、その結果を得る。
+      GetOneStudentResult getOneStudentResult = control.execute(getOneStudentInput);
 
       // 得た結果をリクエストスコープの属性に割り当てる。
-      req.setAttribute("students", getAllStudentResult.students);
+      req.setAttribute("student", getOneStudentResult.student);
 
     } catch (Failure failure) {
 
@@ -51,8 +53,7 @@ public class ShowAllStudentServlet extends HttpServlet {
 
     // 本来はサーブレットからレスポンスを返すが、この例ではJSPを利用してレスポンスをHTML文書として返す。
     // レスポンスを返す処理をJSPに転送する。
-    req.getRequestDispatcher("/WEB-INF/students/show-all.jsp").forward(req, resp);
+    req.getRequestDispatcher("/WEB-INF/students/show-one.jsp").forward(req, resp);
 
   }
-
 }

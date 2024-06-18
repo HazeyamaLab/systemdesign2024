@@ -63,7 +63,22 @@
         --%>
         <c:forEach var="student" items="${requestScope.students}">
           <tr>
-            <td>${fn:escapeXml(student.getId())}</td>
+            <td>
+              <%--
+                【ハイパーリンク】
+                ハイパーリンクは`a`要素で用意する。
+                `href`属性でリンク先のURLを指定する。
+              --%>
+              <%--
+                【コンテキストパスを取得する】
+                サーブレットに処理をさせるためのリクエストの送信先のURLのパス部分はコンテキストパスで始まる。
+                したがって、リンク先やフォームの送信先に使用するURLを絶対パスで指定する場合は、先頭にコンテキストパスを付ける必要がある。
+                EL式の中では`pageContext.servletContext.getContextPath()`でコンテキストパスを得ることができる。
+              --%>
+              <a href="${fn:escapeXml(pageContext.servletContext.getContextPath())}/students/show-one?id=${fn:escapeXml(student.getId())}">
+                ${fn:escapeXml(student.getId())}
+              </a>
+            </td>
             <td>${fn:escapeXml(student.getName())}</td>
           </tr>
         </c:forEach>
@@ -82,12 +97,6 @@
 
     この例では、`servlet.students.CreateStudentServlet.doPost`クラスに処理させるために、
     `action`属性に`<コンテキストパス>/students/create`を、`method`属性に`post`を指定している。
-  --%>
-  <%--
-    【コンテキストパスを取得する】
-    サーブレットに処理をさせるためのリクエストの送信先のURLのパス部分はコンテキストパスで始まる。
-    したがって、フォームの送信先やリンク先に使用するURLを絶対パスで指定する場合は、先頭にコンテキストパスを付ける必要がある。
-    EL式の中では`pageContext.servletContext.getContextPath()`でコンテキストパスを得ることができる。
   --%>
   <form action="${fn:escapeXml(pageContext.servletContext.getContextPath())}/students/create" method="post">
     <ul>
