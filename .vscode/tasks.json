@@ -10,7 +10,7 @@
     {
       "label": "gradle: appStop",
       "type": "shell",
-      "command": "${workspaceFolder}/gradlew appStop"
+      "command": "${workspaceFolder}/gradlew appStop --no-daemon"
     },
   ]
 }
