@@ -1,11 +1,7 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.3.0'
-	id 'io.spring.dependency-management' version '1.1.5'
+	id 'org.gretty' version '4.1.4'
 }
-
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
 
 java {
 	toolchain {
@@ -13,17 +9,27 @@ java {
 	}
 }
 
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'com.mysql:mysql-connector-j'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// JSP/Servlet Support
+	compileOnly 'jakarta.servlet:jakarta.servlet-api:6.1.0'
+	compileOnly 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:4.0.0'
+	implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
+	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
+
+	// MySQL Support
+	implementation 'com.zaxxer:HikariCP:5.1.0'
+	runtimeOnly 'com.mysql:mysql-connector-j:8.4.0'
+
+	// Test Support
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-api:5.10.2'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.2'
 }
 
 tasks.named('test') {
