@@ -19,12 +19,12 @@ public class StudentDao {
   private final ConnectionCloser connectionCloser;
 
   public StudentDao() {
-    // MySQLサーバーにアクセスするためには`DataSource.getConnection`メソッドで`Connection`オブジェクトを得る必要があるので、
+    // MySQLサーバにアクセスするためには`DataSource.getConnection`メソッドで`Connection`オブジェクトを得る必要があるので、
     // `dataSource`フィールドに`DataSource`型のオブジェクトを割り当てておく。
     // `DataSource`型のオブジェクトは`DataSourceHolder.dataSource`フィールドから得られる。
     this.dataSorce = new DataSourceHolder().dataSource;
 
-    // `ConnectionCloser`型のオブジェクトは、MySQLサーバーにアクセスするための`Connection`オブジェクトを閉じるための`closeConnection`メソッドを持つ。
+    // `ConnectionCloser`型のオブジェクトは、MySQLサーバにアクセスするための`Connection`オブジェクトを閉じるための`closeConnection`メソッドを持つ。
     // このクラスの各メソッドで`ConnectionCloser.closeConnection`メソッドを利用できるように、`connectionCloser`フィールドに`ConnectionCloser`型のオブジェクトを割り当てておく。
     this.connectionCloser = new ConnectionCloser();
   }
@@ -40,7 +40,7 @@ public class StudentDao {
 
     try {
 
-      // MySQLサーバーにアクセスするための`Connection`オブジェクトを得る。
+      // MySQLサーバにアクセスするための`Connection`オブジェクトを得る。
       connection = this.dataSorce.getConnection();
 
       // 実行するSQL文を準備する。
@@ -80,7 +80,7 @@ public class StudentDao {
     } finally {
 
       // 値を返したり例外を投げたりする前に、必ず`Connection`を閉じること。
-      // 閉じるのを忘れた場合、アプリケーションとMySQLサーバーの間の同時接続数の上限を超過してエラーになることがある。
+      // 閉じるのを忘れた場合、アプリケーションとMySQLサーバの間の同時接続数の上限を超過してエラーになることがある。
       // `finally`句に書かれた文は`try`句や`catch`句で値を返したり例外を投げたりする前に実行されるので、
       // この例では、`finally`句で`ConnectionCloser.closeConnection`メソッドを呼び出して、必ず`Connection`が閉じられるようにしている。
       this.connectionCloser.closeConnection(connection);
@@ -99,7 +99,7 @@ public class StudentDao {
 
     try {
 
-      // MySQLサーバーにアクセスするための`Connection`オブジェクトを得る。
+      // MySQLサーバにアクセスするための`Connection`オブジェクトを得る。
       connection = this.dataSorce.getConnection();
 
       // 実行するSQL文を準備する。
@@ -144,7 +144,7 @@ public class StudentDao {
     } finally {
 
       // 値を返したり例外を投げたりする前に、必ず`Connection`を閉じること。
-      // 閉じるのを忘れた場合、アプリケーションとMySQLサーバーの間の同時接続数の上限を超過してエラーになることがある。
+      // 閉じるのを忘れた場合、アプリケーションとMySQLサーバの間の同時接続数の上限を超過してエラーになることがある。
       // `finally`句に書かれた文は`try`句や`catch`句で値を返したり例外を投げたりする前に実行されるので、
       // この例では、`finally`句で`ConnectionCloser.closeConnection`メソッドを呼び出して、必ず`Connection`が閉じられるようにしている。
       this.connectionCloser.closeConnection(connection);
@@ -163,7 +163,7 @@ public class StudentDao {
 
     try {
 
-      // MySQLサーバーにアクセスするための`Connection`オブジェクトを得る。
+      // MySQLサーバにアクセスするための`Connection`オブジェクトを得る。
       connection = this.dataSorce.getConnection();
 
       // 実行するSQL文を準備する。
@@ -199,7 +199,7 @@ public class StudentDao {
     } finally {
 
       // 値を返したり例外を投げたりする前に、必ず`Connection`を閉じること。
-      // 閉じるのを忘れた場合、アプリケーションとMySQLサーバーの間の同時接続数の上限を超過してエラーになることがある。
+      // 閉じるのを忘れた場合、アプリケーションとMySQLサーバの間の同時接続数の上限を超過してエラーになることがある。
       // `finally`句に書かれた文は`try`句や`catch`句で値を返したり例外を投げたりする前に実行されるので、
       // この例では、`finally`句で`ConnectionCloser.closeConnection`メソッドを呼び出して、必ず`Connection`が閉じられるようにしている。
       this.connectionCloser.closeConnection(connection);
