@@ -30,6 +30,8 @@ Webアプリケーションは、サーバがHTTPリクエストの内容に応�
 しかし、Webアプリケーションの場合、アプリケーションの内部状態に応じてHTML文書を生成して返しています。
 そのため、ブラウザにとってはただHTTPでサーバとやり取りを行なっているだけですが、ユーザにとっては、`a`要素や`form`要素で作られたUIを操作すると、自分の操作に応じて画面が変化する（表示されるHTML文書が変わる）のでアプリケーションのように見える、という仕組みです。
 
+![ブラウザとWebアプリケーションの関係](http.png)
+
 📌 HTTPリクエストは、ユーザにとってはWebアプリケーションのサーバに実行してほしいプログラムを指定する情報が含まれているものであり、Webアプリケーションのサーバにとっては自身が実行するプログラムを選択する手がかりとなる情報が含まれているものです。
 具体的には次のような情報が含まれています。
 
@@ -141,9 +143,9 @@ DAOパターンは、データベースを、ドメインオブジェクト（EC
 
 今回はstuinfoのサンプルコードとは別に、これを説明するためだけのサンプルコードを用意しました。
 
-- [HelloGet.java](./main/java/servlet/hello/HelloGet.java)：`/systemdesign2024/hello-get`に対するGETリクエストを処理するサーブレット。`hello-jsp.jsp`がHTML文書を生成して返すように指定する（**フォワード**）。
-- [HelloPost.java](./main/java/servlet/hello/HelloPost.java)：`/systemdesign2024/hello-post`に対するPOSTリクエストを処理するサーブレット。`/systemdesign2024/hello-get`にアクセスさせるために**リダイレクト**を返す。
-- [HelloPost2.java](./main/java/servlet/hello/HelloPost2.java)：`/systemdesign2024/hello-post2`に対するPOSTリクエストを処理するサーブレット。`/systemdesign2024/hello-get`にアクセスさせるために**リダイレクト**を返す。
+- [HelloGet.java](./main/java/servlet/hello/HelloGet.java)：`<コンテキストパス>/hello-get`に対するGETリクエストを処理するサーブレット。`hello-jsp.jsp`がHTML文書を生成して返すように指定する（**フォワード**）。
+- [HelloPost.java](./main/java/servlet/hello/HelloPost.java)：`<コンテキストパス>/hello-post`に対するPOSTリクエストを処理するサーブレット。`<コンテキストパス>/hello-get`にアクセスさせるために**リダイレクト**を返す。
+- [HelloPost2.java](./main/java/servlet/hello/HelloPost2.java)：`<コンテキストパス>/hello-post2`に対するPOSTリクエストを処理するサーブレット。`<コンテキストパス>/hello-get`にアクセスさせるために**リダイレクト**を返す。
 - [hello.jsp](./main/webapp/WEB-INF/hello/hello.jsp)：JSP。リクエストに含まれるパラメータを表示する。
 
 [サンプルコードのアプリケーションを起動](../README.md#️-開発したアプリケーションを起動する)して、ブラウザでまずは http://localhost:8080/systemdesign2024/hello-get にアクセスしてください。
@@ -158,27 +160,27 @@ DAOパターンは、データベースを、ドメインオブジェクト（EC
 HTML文書が表示されている画面を操作してみましょう。
 
 - `a`要素によって作られたリンクが3種類あります。それぞれクリックしてみましょう。
-    - `/systemdesign2024/hello-get にアクセスする`
+    - `<コンテキストパス>/hello-get にアクセスする`
        - 先ほどブラウザのアドレスバーに入力したのと同じURLにアクセスして、同じHTML文書を得たことになるので、画面に変化はみられません。
-    - `/systemdesign2024/hello-post にアクセスする`
-        1. ブラウザは、`/systemdesign2024/hello-post`にGETリクエストを送信します。
+    - `<コンテキストパス>/hello-post にアクセスする`
+        1. ブラウザは、`<コンテキストパス>/hello-post`にGETリクエストを送信します。
         2. Webアプリケーションのサーバは、`HelloPost.doGet`メソッドを呼び出そうとしますが、それは実装されていないため、Webアプリケーションのサーバはエラーを返します。
-    - `/systemdesign2024/hello-get?parameterInGetRequest=You_clicked_the_hyperlink にアクセスする`
-        1. ブラウザは、`/systemdesign2024/hello-post`にGETリクエストを送信します。リクエストの`parameterInGetRequest`パラメータには、`You_clicked_the_hyperlink`という文字列が指定されています。
+    - `<コンテキストパス>/hello-get?parameterInGetRequest=You_clicked_the_hyperlink にアクセスする`
+        1. ブラウザは、`<コンテキストパス>/hello-post`にGETリクエストを送信します。リクエストの`parameterInGetRequest`パラメータには、`You_clicked_the_hyperlink`という文字列が指定されています。
         2. Webアプリケーションのサーバは、このURLに紐付けられた`HelloGet.doGet`メソッドを呼び出します。
         3. `HelloGet.doGet`メソッドは、レスポンスのHTML文書を`hello.jsp`に生成させるために「フォワード」を行います。
         4. `hello.jsp`は、リクエストに含まれる`parameterInGetRequest`パラメータの値を書き込んだHTML文書を生成して返します。したがって、そこに`You_clicked_the_hyperlink`と書かれたHTML文書が返ってきます。
 - `form`要素によって作られたリンクが3種類あります。それぞれ操作して送信してみましょう。
-    - `/systemdesign2024/hello-get にGETリクエストを送信するためのフォーム`
-        1. ブラウザは、`/systemdesign2024/hello-get`にGETリクエストを送信します。リクエストの`parameterInGetRequest`パラメータには、入力した文字列が指定されています。
+    - `<コンテキストパス>/hello-get にGETリクエストを送信するためのフォーム`
+        1. ブラウザは、`<コンテキストパス>/hello-get`にGETリクエストを送信します。リクエストの`parameterInGetRequest`パラメータには、入力した文字列が指定されています。
         2. Webアプリケーションのサーバは、このURLに紐付けられた`HelloGet.doGet`メソッドを呼び出します。
         3. `HelloGet.doGet`メソッドはレスポンスのHTML文書を`hello.jsp`に生成させるために「フォワード」を行います。
         4. `hello.jsp`は、リクエストに含まれる`parameterInGetRequest`パラメータの値を書き込んだHTML文書を生成して返します。したがって、そこに入力した文字列が書かれたHTML文書が返ってきます。
-    - `/systemdesign2024/hello-post にPOSTリクエストを送信するためのフォーム`
-        1. ブラウザは、`/systemdesign2024/hello-post`にPOSTリクエストを送信します。リクエストの`parameterInPostRequest`パラメータには、入力した文字列が指定されています。
+    - `<コンテキストパス>/hello-post にPOSTリクエストを送信するためのフォーム`
+        1. ブラウザは、`<コンテキストパス>/hello-post`にPOSTリクエストを送信します。リクエストの`parameterInPostRequest`パラメータには、入力した文字列が指定されています。
         2. Webアプリケーションのサーバは、このURLに紐付けられた`HelloPost.doPost`メソッドを呼び出します。
-        3. `HelloPost.doPost`メソッドは、`/systemdesign2024/hello-get`にアクセスさせるようにリダイレクトを返します。
-        4. ブラウザは、返ってきたリダイレクトを踏まえて`/systemdesign2024/hello-get`にGETリクエストを送信します。
+        3. `HelloPost.doPost`メソッドは、`<コンテキストパス>/hello-get`にアクセスさせるようにリダイレクトを返します。
+        4. ブラウザは、返ってきたリダイレクトを踏まえて`<コンテキストパス>/hello-get`にGETリクエストを送信します。
         5. Webアプリケーションのサーバは、このURLに紐付けられた`HelloGet.doGet`メソッドを呼び出します。
         6. `HelloGet.doGet`メソッドは、レスポンスのHTML文書を`hello.jsp`に生成させるために「フォワード」を行います。
         7. `hello.jsp`はHTML文書を生成します。**生成したHTML文書には`parameterInPostRequest`パラメータの値は書き込まれていませんでした**。
@@ -186,13 +188,13 @@ HTML文書が表示されている画面を操作してみましょう。
             - **📌 `doPost`メソッドでリダイレクトする場合で、`doPost`メソッドからリダイレクト先のHTML文書の内容を書き換えたい場合は、**
                 - `doPost`メソッドは、アプリケーションの状態によってリダイレクト先のURLのクエリパラメータを変えるように実装する必要があります。
                 - リダイレクト先に紐付けられているサーブレットおよびJSPは、クエリパラメータの値によって生成されるHTML文書の内容を変えるように実装する必要があります。
-    - `/systemdesign2024/hello-post2 にPOSTリクエストを送信するためのフォーム`
-        1. ブラウザは、`/systemdesign2024/hello-post2`にPOSTリクエストを送信します。リクエストの`parameterInPostRequest`パラメータの値に入力した文字列が指定されています。
+    - `<コンテキストパス>/hello-post2 にPOSTリクエストを送信するためのフォーム`
+        1. ブラウザは、`<コンテキストパス>/hello-post2`にPOSTリクエストを送信します。リクエストの`parameterInPostRequest`パラメータの値に入力した文字列が指定されています。
         2. Webアプリケーションのサーバは、このURLに紐付けられた`HelloPost2.doPost`メソッドを呼び出します。
-        3. `HelloPost2.doPost`メソッドは、`/systemdesign2024/hello-get`にアクセスさせるようにリダイレクトを返します。**このとき、`parameterInGetRequest`パラメータに、`parameterInPostRequest`パラメータの値を指定するようにしています**。
-            - `HelloPost.doPost`メソッドは、ただ`/systemdesign2024/hello-get`にアクセスさせるようにリダイレクトを返すだけでした。
+        3. `HelloPost2.doPost`メソッドは、`<コンテキストパス>/hello-get`にアクセスさせるようにリダイレクトを返します。**このとき、`parameterInGetRequest`パラメータに、`parameterInPostRequest`パラメータの値を指定するようにしています**。
+            - `HelloPost.doPost`メソッドは、ただ`<コンテキストパス>/hello-get`にアクセスさせるようにリダイレクトを返すだけでした。
             - しかし、`HelloPost2.doPost`メソッドは、リクエストの`parameterInPostRequest`パラメータの値によってリダイレクト先のURLのクエリパラメータの値を変えることで、4で送信するリクエストにパラメータが含まれるようにしています。
-        4. ブラウザは、返ってきたリダイレクトを踏まえて`/systemdesign2024/hello-get`にGETリクエストを送信します。**リクエストの`parameterInGetRequest`パラメータには、1で入力した文字列が指定されています**。
+        4. ブラウザは、返ってきたリダイレクトを踏まえて`<コンテキストパス>/hello-get`にGETリクエストを送信します。**リクエストの`parameterInGetRequest`パラメータには、1で入力した文字列が指定されています**。
         5. Webアプリケーションのサーバは、このURLに紐付けられた`HelloGet.doGet`メソッドを呼び出します。
         6. `HelloGet.doGet`メソッドは、レスポンスのHTML文書を`hello.jsp`に生成させるために「フォワード」を行います。
         7. `hello.jsp`はHTML文書を生成します。**生成したHTML文書には`parameterInPostRequest`パラメータの値は書き込まれていませんが、`parameterInGetRequest`パラメータの値として1で入力した値が書き込まれていました**。
