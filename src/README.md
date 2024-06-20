@@ -99,6 +99,16 @@ DAOパターンは、データベースを、ドメインオブジェクト（EC
 |**指定した学籍番号の学生の情報の1件取得**|[show-one.jsp](./main/webapp/WEB-INF/students/show-one.jsp)|[ShowOneStudentServlet.java](./main/java/servlet/students/ShowOneStudentServlet.java)|[GetOneStudent.java](./main/java/control/students/GetOneStudent.java)|[Student.java](./main/java/entity/Student.java)|[StudentDao.java](./main/java/dao/StudentDao.java)|
 |**学生の情報の登録**|なし（「すべての学生の情報の取得」に対応する画面を表示）|[CreateStudentServlet.java](./main/java/servlet/students/CreateStudentServlet.java)|[CreateStudent.java](./main/java/control/students/CreateStudent.java)|[Student.java](./main/java/entity/Student.java)|[StudentDao.java](./main/java/dao/StudentDao.java)|
 
+## コミュニケーション図
+
+[サンプルコードのアーキテクチャの説明](#-サンプルコードのアーキテクチャ)で示した図をより具体化してコミュニケーション図として表現したものをユースケースごとに作成しました。
+
+### 「すべての学生の情報の取得」ユースケース  
+![「すべての学生の情報の取得」ユースケースのコミュニケーション図](communication-getallstudent.png)
+
+### 「学生の情報の登録」ユースケース  
+![「学生の情報の登録」ユースケースのコミュニケーション図](communication-createstudent.png)
+
 ## プレゼンテーション層とHTTPとサーブレット、JSP
 
 サンプルコードでは、HTTPやHTMLの仕組みを利用して、プレゼンテーション層を次のように実装しています。
