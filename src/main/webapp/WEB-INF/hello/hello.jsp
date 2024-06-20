@@ -43,17 +43,17 @@
         したがって、リンク先やフォームの送信先に使用するURLを絶対パスで指定する場合は、先頭にコンテキストパスを付ける必要がある。
         EL式の中では`pageContext.servletContext.getContextPath()`でコンテキストパスを得ることができる。
       --%>
-      <a href="${fn:escapeXml(pageContext.servletContext.getContextPath())}/hello-get">/systemdesign2024/hello-get にアクセスする</a>
+      <a href="${fn:escapeXml(pageContext.servletContext.getContextPath())}/hello-get">&lt;コンテキストパス&gt;/hello-get にアクセスする</a>
     </li>
     <li>
-      <a href="${fn:escapeXml(pageContext.servletContext.getContextPath())}/hello-post">/systemdesign2024/hello-post にアクセスする</a>
+      <a href="${fn:escapeXml(pageContext.servletContext.getContextPath())}/hello-post">&lt;コンテキストパス&gt;/hello-post にアクセスする</a>
     </li>
     <li>
-      <a href="${fn:escapeXml(pageContext.servletContext.getContextPath())}/hello-get?parameterInGetRequest=You_clicked_the_hyperlink">/systemdesign2024/hello-get?parameterInGetRequest=You_clicked_the_hyperlink にアクセスする</a>
+      <a href="${fn:escapeXml(pageContext.servletContext.getContextPath())}/hello-get?parameterInGetRequest=You_clicked_the_hyperlink">&lt;コンテキストパス&gt;/hello-get?parameterInGetRequest=You_clicked_the_hyperlink にアクセスする</a>
     </li>
   </ul>
 
-  <h2>/systemdesign2024/hello-get にGETリクエストを送信するためのフォーム</h2>
+  <h2>&lt;コンテキストパス&gt;/hello-get にGETリクエストを送信するためのフォーム</h2>
   <%--
     【フォーム】
     ユーザからWebアプリケーションに情報を送信させるときは、HTTPリクエストを送信させる。
@@ -83,7 +83,7 @@
     <button type="submit">GETリクエストを送信</button>
   </form>
 
-  <h2>/systemdesign2024/hello-post にPOSTリクエストを送信するためのフォーム</h2>
+  <h2>&lt;コンテキストパス&gt;/hello-post にPOSTリクエストを送信するためのフォーム</h2>
   <form action="${fn:escapeXml(pageContext.servletContext.getContextPath())}/hello-post" method="post">
     <p>
       <label>入力：<input type="text" name="parameterInPostRequest" /></label>
@@ -91,7 +91,7 @@
     <button type="submit">POSTリクエストを送信</button>
   </form>
 
-  <h2>/systemdesign2024/hello-post2 にPOSTリクエストを送信するためのフォーム</h2>
+  <h2>&lt;コンテキストパス&gt;/hello-post2 にPOSTリクエストを送信するためのフォーム</h2>
   <form action="${fn:escapeXml(pageContext.servletContext.getContextPath())}/hello-post2" method="post">
     <p>
       <label>入力：<input type="text" name="parameterInPostRequest" /></label>
