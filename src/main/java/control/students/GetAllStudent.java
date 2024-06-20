@@ -7,7 +7,7 @@ import dao.StudentDao;
 import entity.Student;
 import modelUtil.Failure;
 
-/** システムに登録されているすべての学生の情報を取得するコントローラ。 */
+/** システムに登録されているすべての学生の情報を取得するコントロール。 */
 public class GetAllStudent {
 
   /**

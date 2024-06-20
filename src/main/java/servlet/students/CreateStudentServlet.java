@@ -27,7 +27,7 @@ public class CreateStudentServlet extends HttpServlet {
     // すべてのサーブレットのすべてのメソッドにこの記述が必要。
     req.setCharacterEncoding("UTF-8");
 
-    // リクエストに含まれるパラメータの値を得て、コントローラへの入力用のオブジェクトにまとめる。
+    // リクエストに含まれるパラメータの値を得て、コントロールへの入力用のオブジェクトにまとめる。
     String id = req.getParameter("id");
     String name = req.getParameter("name");
     CreateStudentInput createStudentInput = new CreateStudentInput(id, name);
@@ -37,7 +37,7 @@ public class CreateStudentServlet extends HttpServlet {
 
     try {
 
-      // コントローラに入力用のオブジェクトを渡して処理を実行し、その結果を得る。
+      // コントロールに入力用のオブジェクトを渡して処理を実行し、その結果を得る。
       CreateStudentResult createStudentResult = control.execute(createStudentInput);
 
       // `<コンテキストパス>/students/show-all`に処理結果のメッセージを含むクエリパラメータを付けたURLにアクセスしてもらうように、レスポンスを返す。
@@ -48,7 +48,7 @@ public class CreateStudentServlet extends HttpServlet {
 
     } catch (Failure failure) {
 
-      // コントローラは`Failure`型の例外を投げるかもしれない。
+      // コントロールは`Failure`型の例外を投げるかもしれない。
       // 例外が投げられた場合はその時点で`try`句の文の実行は停止され、`catch`句の各文が実行されることになる。
 
       // 例外をログに出力する。

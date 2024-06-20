@@ -5,7 +5,7 @@ import dao.StudentDao;
 import entity.Student;
 import modelUtil.Failure;
 
-/** 学生の情報を登録するコントローラ。 */
+/** 学生の情報を登録するコントロール。 */
 public class CreateStudent {
 
   /**
