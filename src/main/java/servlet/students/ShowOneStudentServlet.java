@@ -32,7 +32,7 @@ public class ShowOneStudentServlet extends HttpServlet {
 
     try {
 
-      // コントローラに入力用のオブジェクトを渡して処理を実行し、その結果を得る。
+      // コントロールに入力用のオブジェクトを渡して処理を実行し、その結果を得る。
       GetOneStudentResult getOneStudentResult = control.execute(getOneStudentInput);
 
       // 得た結果をリクエストスコープの属性に割り当てる。
@@ -40,7 +40,7 @@ public class ShowOneStudentServlet extends HttpServlet {
 
     } catch (Failure failure) {
 
-      // コントローラは`Failure`型の例外を投げるかもしれない。
+      // コントロールは`Failure`型の例外を投げるかもしれない。
       // 例外が投げられた場合はその時点で`try`句の文の実行は停止され、`catch`句の各文が実行されることになる。
 
       // 例外をログに出力する。

@@ -30,7 +30,7 @@ public class ShowAllStudentServlet extends HttpServlet {
 
     try {
 
-      // コントローラの処理を実行し、その結果を得る。
+      // コントロールの処理を実行し、その結果を得る。
       GetAllStudentResult getAllStudentResult = control.execute();
 
       // 得た結果をリクエストスコープの属性に割り当てる。
@@ -38,7 +38,7 @@ public class ShowAllStudentServlet extends HttpServlet {
 
     } catch (Failure failure) {
 
-      // コントローラは`Failure`型の例外を投げるかもしれない。
+      // コントロールは`Failure`型の例外を投げるかもしれない。
       // 例外が投げられた場合はその時点で`try`句の文の実行は停止され、`catch`句の各文が実行されることになる。
 
       // 例外をログに出力する。
