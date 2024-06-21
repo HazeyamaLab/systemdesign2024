@@ -4,8 +4,14 @@
 
 ## 🧭 Quick Links
 
-- 本授業では、受講生のみなさんに開発環境を構築していただき、その開発環境を用いて開発と実演を行なっていただきます。開発環境の構築方法については[docs/setup/index.md](docs/setup/index.md)をご覧ください。
-- このリポジトリにはサンプルコードが含まれています。サンプルコードについては[src/README.md](src/README.md)をご覧ください。
+- [開発環境の**使い方**（この文書）](./README.md)
+    - [⏯️ 開発したアプリケーションを起動する](#️-開発したアプリケーションを起動する)
+    - [🗄️ データベース管理システムを操作する](#️-データベース管理システムを操作する)
+- 開発環境の構築方法、開発コンテナーへの**接続方法**、開発環境に起因するトラブルの対処法
+    - [🪟 Windowsセルフホスト用](./docs/setup/procedure-for-selfhost-windows.md)
+    - [🍎 macOSセルフホスト用](./docs/setup/procedure-for-selfhost-macos.md)
+    - [📡 リモート開発環境利用者用](./docs/setup/procedure-for-hrde-user.md)
+- [サンプルコードの説明](src/README.md)
 
 ## ℹ️ 開発環境の使い方
 
