@@ -2,6 +2,12 @@
 
 本授業では、受講生のみなさんに開発環境を構築していただき、その開発環境を用いて開発と実演を行なっていただきます。
 
+## 🧭 Quick Links
+
+- [Windowsセルフホスト用の手順書](./procedure-for-selfhost-windows.md)
+- [macOSセルフホスト用の手順書](./procedure-for-selfhost-macos.md)
+- [リモート開発環境利用者用の手順書](./procedure-for-hrde-user.md)
+
 ## 📦 今回構築する開発環境の仕組み
 
 本授業では「開発コンテナー（Dev Container）」という技術を用いて開発環境を構築します。
