@@ -65,7 +65,7 @@
 ### 3. 開発コンテナーを作成し、作成した開発コンテナーに接続する
 
 1. VSCodeを起動します。
-    - タスクバーの`スタート`→`すべてのアプリ`→`Visual Studio Code`をクリックします。
+    - Dockの`Launchpad`をクリック→`Visual Studio Code`の順にクリックします。
 2. VSCode上で開発コンテナーを作成するために`Dev Containers`拡張機能をインストールします。`⇧⌘P`（`⇧`キーと`⌘`キーを押しながら`P`キーを押す）を押してコマンドパレットを開き、**`>`を消してから**`ext install ms-vscode-remote.remote-containers`と入力して`Enter`キーを押します。
 3. 開発コンテナーを作成します。
     1. `⇧⌘P`を押してコマンドパレットを開き、`Dev Containers: Clone Repository in Container Volume`と入力して`Enter`キーを押します（途中まで入力して同名の項目を選択しても構いません）。
