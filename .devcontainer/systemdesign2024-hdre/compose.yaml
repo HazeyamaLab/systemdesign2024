@@ -2,7 +2,9 @@ name: systemdesign2024-hdre
 
 services:
   devcontainer:
-    image: emerald.u-gakugei.ac.jp:5000/devcontainers-java:1-21-bullseye
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - ../../..:/workspaces:cached
     depends_on:
