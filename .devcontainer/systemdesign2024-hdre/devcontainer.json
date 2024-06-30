@@ -8,6 +8,7 @@
   ],
   "service": "devcontainer",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "overrideCommand": true,
 
   "features": {},
 
@@ -24,6 +25,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "samuel-weinhardt.vscode-jsp-lang",
         "vscjava.vscode-java-pack"
       ]
     }
