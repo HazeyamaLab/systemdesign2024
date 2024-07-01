@@ -12,6 +12,7 @@
     - [🍎 macOSセルフホスト用](./docs/setup/procedure-for-selfhost-macos.md)
     - [📡 リモート開発環境利用者用](./docs/setup/procedure-for-hrde-user.md)
 - [サンプルコードの説明](src/README.md)
+- [やることリスト](docs/development/todo.md)
 
 ## ℹ️ 開発環境の使い方
 
