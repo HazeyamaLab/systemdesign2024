@@ -11,7 +11,7 @@ services:
       - mysql
       - adminer
   mysql:
-    image: emerald.u-gakugei.ac.jp:5000/mysql:latest
+    image: emerald.u-gakugei.ac.jp:5000/library/mysql:latest
     environment:
       - TZ=Asia/Tokyo
       - MYSQL_ROOT_PASSWORD=password
@@ -22,7 +22,7 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
   adminer:
-    image: emerald.u-gakugei.ac.jp:5000/adminer:latest
+    image: emerald.u-gakugei.ac.jp:5000/library/adminer:latest
 
 volumes:
   mysql_data:
