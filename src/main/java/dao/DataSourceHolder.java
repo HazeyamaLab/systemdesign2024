@@ -39,6 +39,9 @@ class DataSourceHolder {
   public final DataSource dataSource;
 
   public DataSourceHolder() {
+    // JDBC Driverを読み込む。
+    JdbcDriverLoader.load();
+
     // 環境変数`APP_DB_PROPERTIES_FILENAME`がある場合は、`src/main/resources`配下のそのファイルからDBの接続設定を取得する。
     String propertiesFileName = System.getenv("APP_DB_PROPERTIES_FILENAME");
     if (propertiesFileName == null) {
