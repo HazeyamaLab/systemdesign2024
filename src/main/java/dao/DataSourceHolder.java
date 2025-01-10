@@ -14,9 +14,11 @@ import com.zaxxer.hikari.HikariDataSource;
  * class SampleDao {
  *   // `DataSourceHolder.dataSource`をDAOのフィールドに割り当てておく。
  *   private final DataSource dataSource;
+ * 
  *   public SampleDao() {
  *     this.dataSourceHolder = new DataSourceHolder().dataSource;
  *   }
+ * 
  *   public List&lt;SampleEntity&gt; getAll() {
  *     Connection connection = null;
  *     try {
@@ -37,9 +39,21 @@ class DataSourceHolder {
   public final DataSource dataSource;
 
   public DataSourceHolder() {
+    // 環境変数`APP_DB_PROPERTIES_FILENAME`がある場合は、`src/main/resources`配下のそのファイルからDBの接続設定を取得する。
+    String propertiesFileName = System.getenv("APP_DB_PROPERTIES_FILENAME");
+    if (propertiesFileName == null) {
+      propertiesFileName = "dataSource.properties";
+    }
+
+    // 環境変数`APP_DB_PROPERTIES_FILEPATH`がある場合は、そのパスのファイルからDBの接続設定を取得する。
+    // この環境変数での設定は`APP_DB_PROPERTIES_FILENAME`での設定に優先する。
+    String propertiesFilePath = System.getenv("APP_DB_PROPERTIES_FILEPATH");
+    if (propertiesFilePath == null) {
+      propertiesFilePath = this.getClass().getClassLoader().getResource(propertiesFileName).getPath();
+    }
+
     if (DataSourceHolder._hikariConfig == null) {
-      DataSourceHolder._hikariConfig = new HikariConfig(
-          this.getClass().getClassLoader().getResource("dataSource.properties").getPath());
+      DataSourceHolder._hikariConfig = new HikariConfig(propertiesFilePath);
     }
 
     if (DataSourceHolder._dataSource == null) {
