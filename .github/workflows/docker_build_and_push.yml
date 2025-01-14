@@ -2,6 +2,8 @@ name: Build and Push to Docker Private Registry
 
 on:
   push:
+    branches:
+      - '**'
     tags: 
       - 'v*'
 
