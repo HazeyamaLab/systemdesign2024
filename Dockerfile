@@ -20,7 +20,7 @@ COPY ./src ./src
 RUN ./gradlew war
 
 # 2. プロダクション用のコンテナ
-FROM tomcat:11.0.2-jdk21-temurin-noble
+FROM tomcat:11.0.4-jdk21-temurin-noble
 ARG PROJECT_NAME
 EXPOSE 8080
 
