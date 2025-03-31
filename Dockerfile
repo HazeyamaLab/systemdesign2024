@@ -1,7 +1,7 @@
 ARG PROJECT_NAME=systemdesign2024
 
 # 1. ビルドコンテナ
-FROM eclipse-temurin:21.0.5_11-jdk-alpine as builder
+FROM eclipse-temurin:24_36-jdk-alpine as builder
 WORKDIR /workdir
 
 # Gradleの実行に必要なものだけコピー
