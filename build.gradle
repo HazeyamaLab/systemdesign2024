@@ -5,9 +5,20 @@ plugins {
 }
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
+    toolchain {
+        // ① 必要な Java バージョン
+        languageVersion = JavaLanguageVersion.of(21)
+        // ② どの配布元の JDK を使うか
+        vendor = JvmVendorSpec.ADOPTIUM
+
+        // ③ ローカルに JDK21 が無い場合に落としてくるリポジトリ
+        repositories {
+            maven {
+                url = uri("https://adoptium.jfrog.io/artifactory/jfrog")
+            }
+            // 必要なら他のリポジトリ（Corretto, Temurin 公式など）も追加可能
+        }
+    }
 }
 
 compileJava.options.encoding = 'UTF-8'
