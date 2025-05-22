@@ -285,7 +285,16 @@ exit
 mysql -h mysql -u mysql -p
 ```
 
-テーブル作成を行う。
+使用するデータベースを宣言する。
+今回は`database`と言う名前のデータベースを使用する。→`use (データベース名)`
+
+```sql
+use database;
+```
+
+テーブル作成を行う。  
+`drop table if exists students;`→もし`students`テーブルがすでに存在しているなら消す。
+
 ```sql
 drop table if exists students;
 
