@@ -257,7 +257,13 @@ DAOはユースケースから必要とされているメソッドを実装し�
 
 なお、このサンプルのDAOを動作させるためには、`mysql`コンテナに`database`データベースを作成して、そこに必要なテーブルを作成する必要があります。
 
-まず、[`mysql`コンテナのMySQLサーバに **`root`ユーザとして** ログイン](../README.md#cliで操作する場合)して、次のSQL文を実行して、データベースを作成します。
+まず、[`mysql`コンテナのMySQLサーバに **`root`ユーザとして** ログイン](../README.md#cliで操作する場合)してください。
+パスワードは`password`です。
+
+```sh
+mysql -h mysql -u root -p
+```
+次のSQL文を実行して、データベースを作成します。
 
 ```sql
 -- データベース`database`を作成する。
@@ -268,6 +274,26 @@ grant all privileges on `database`.* to `mysql`@`%`;
 ```
 
 次に、[`mysql`コンテナのMySQLサーバの`database`データベースに`mysql`ユーザとしてログイン](../README.md#cliで操作する場合)して、[setup/init.sql](../setup/init.sql)に記されているSQL文を実行して、必要なテーブルを作成します。
+`root`ユーザーからログアウト
+```sql
+exit
+```
+
+`mysql`ユーザーとしてログイン、パスワードは`password`です。
+
+```sh
+mysql -h mysql -u mysql -p
+```
+
+テーブル作成を行う。
+```sql
+drop table if exists students;
+
+create table students (
+  `id` varchar(8) primary key,
+  `name` varchar(64) not null
+);
+```
 
 ### 👉 stuinfoからデータベース管理システムへの接続情報の保存場所
 
