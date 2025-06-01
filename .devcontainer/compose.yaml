@@ -14,7 +14,7 @@ services:
       - MYSQL_DATABASE=initdb
       - MYSQL_USER=mysql
       - MYSQL_PASSWORD=password
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --key_buffer_size=1048576 --myisam_sort_buffer_size=1048576 --innodb_buffer_pool_size=5242880 --innodb_log_buffer_size=1048576 --innodb_log_file_size=4194304 --max-connections=24 --open_files_limit=1024 --table_definition_cache=400 --table_open_cache=256
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --key_buffer_size=1048576 --myisam_sort_buffer_size=1048576 --innodb_buffer_pool_size=5242880 --innodb_log_buffer_size=1048576 --innodb-redo-log-capacity=8388608 --max-connections=24 --open_files_limit=1024 --table_definition_cache=400 --table_open_cache=256
     volumes:
       - mysql_data:/var/lib/mysql
   adminer:
