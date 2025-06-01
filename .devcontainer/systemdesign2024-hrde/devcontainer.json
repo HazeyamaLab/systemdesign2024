@@ -8,6 +8,13 @@
   ],
   "service": "devcontainer",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "mounts": [
+    {
+      "type": "bind",
+      "source": "${localWorkspaceFolder}",
+      "target": "/workspaces/${localWorkspaceFolderBasename}"
+    }
+  ],
   "overrideCommand": true,
 
   "features": {},

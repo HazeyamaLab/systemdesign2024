@@ -3,8 +3,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - ../..:/workspaces:cached
     depends_on:
       - mysql
       - adminer
