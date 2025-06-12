@@ -44,7 +44,7 @@ public class CreateStudentServlet extends HttpServlet {
       // レスポンスを受け取ったブラウザはこのURLに自動的にアクセスする。
       // クエリパラメータの値はapplication/x-www-form-urlencoded（いわゆるパーセントエンコーディング）で符号化されている必要があるため、`URLEncoder.encode`メソッドを用いて符号化の処理を行っている。
       resp.sendRedirect(req.getContextPath()
-          + "/students/show-all?messageFromPrev=" + URLEncoder.encode(createStudentResult.message, "UTF-8"));
+          + "/students/show-all?messageFromPrev=" + URLEncoder.encode(createStudentResult.message(), "UTF-8"));
 
     } catch (Failure failure) {
 

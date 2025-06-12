@@ -19,7 +19,7 @@ public class CreateStudent {
     try {
 
       // 入力の情報を用いて、学生の情報のエンティティオブジェクトをインスタンス化する。
-      Student student = new Student(input.id, input.name);
+      Student student = new Student(input.id(), input.name());
 
       // DAOをインスタンス化する。
       StudentDao studentDao = new StudentDao();

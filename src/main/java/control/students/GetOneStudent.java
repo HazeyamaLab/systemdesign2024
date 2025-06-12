@@ -25,7 +25,7 @@ public class GetOneStudent {
       StudentDao studentDao = new StudentDao();
 
       // 指定された学籍番号の学生の情報をDAOから取得する。
-      Student student = studentDao.getOneById(input.id);
+      Student student = studentDao.getOneById(input.id());
 
       // 取得に成功したことを意味する情報を返す。
       GetOneStudentResult result = new GetOneStudentResult(student);
