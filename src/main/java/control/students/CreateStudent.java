@@ -11,15 +11,16 @@ public class CreateStudent {
   /**
    * 学生の情報を登録する。
    * 
-   * @param input 登録する学生の情報を{@link CreateStudentInput}型のオブジェクトにまとめたものを入力とする。
+   * @param id 登録する学生の学籍番号
+   * @param name 登録する学生の氏名
    * @return 登録に成功した場合は、{@link CreateStudentResult}型のオブジェクトを返す。
    * @throws Failure 登録に失敗した場合は、{@link Failure}型の例外を投げる。
    */
-  public CreateStudentResult execute(CreateStudentInput input) throws Failure {
+  public CreateStudentResult execute(String id, String name) throws Failure {
     try {
 
       // 入力の情報を用いて、学生の情報のエンティティオブジェクトをインスタンス化する。
-      Student student = new Student(input.id(), input.name());
+      Student student = new Student(id, name);
 
       // DAOをインスタンス化する。
       StudentDao studentDao = new StudentDao();

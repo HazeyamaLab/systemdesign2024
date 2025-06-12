@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URLEncoder;
 
 import control.students.CreateStudent;
-import control.students.CreateStudentInput;
 import control.students.CreateStudentResult;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -27,18 +26,17 @@ public class CreateStudentServlet extends HttpServlet {
     // すべてのサーブレットのすべてのメソッドにこの記述が必要。
     req.setCharacterEncoding("UTF-8");
 
-    // リクエストに含まれるパラメータの値を得て、コントロールへの入力用のオブジェクトにまとめる。
+    // リクエストに含まれるパラメータの値を取得する。
     String id = req.getParameter("id");
     String name = req.getParameter("name");
-    CreateStudentInput createStudentInput = new CreateStudentInput(id, name);
 
     // ビジネスロジック層の窓口である、ECBパターンにおけるコントロールをインスタンス化する。
     CreateStudent control = new CreateStudent();
 
     try {
 
-      // コントロールに入力用のオブジェクトを渡して処理を実行し、その結果を得る。
-      CreateStudentResult createStudentResult = control.execute(createStudentInput);
+      // コントロールにパラメータの値を渡して処理を実行し、その結果を得る。
+      CreateStudentResult createStudentResult = control.execute(id, name);
 
       // `<コンテキストパス>/students/show-all`に処理結果のメッセージを含むクエリパラメータを付けたURLにアクセスしてもらうように、レスポンスを返す。
       // レスポンスを受け取ったブラウザはこのURLに自動的にアクセスする。

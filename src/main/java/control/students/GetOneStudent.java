@@ -10,7 +10,7 @@ public class GetOneStudent {
   /**
    * 指定された学籍番号の学生の情報を取得する。
    * 
-   * @param input どの学生の情報を取得したいのかを{@link GetOneStudentInput}型のオブジェクトにまとめたものを入力とする。
+   * @param id 取得したい学生の学籍番号
    * 
    * @return
    *         取得に成功した場合は、{@link GetOneStudentResult}型のオブジェクトを返す。
@@ -18,14 +18,14 @@ public class GetOneStudent {
    * 
    * @throws Failure 取得に失敗した場合は、{@link Failure}型の例外を投げる。
    */
-  public GetOneStudentResult execute(GetOneStudentInput input) throws Failure {
+  public GetOneStudentResult execute(String id) throws Failure {
     try {
 
       // DAOをインスタンス化する。
       StudentDao studentDao = new StudentDao();
 
       // 指定された学籍番号の学生の情報をDAOから取得する。
-      Student student = studentDao.getOneById(input.id());
+      Student student = studentDao.getOneById(id);
 
       // 取得に成功したことを意味する情報を返す。
       GetOneStudentResult result = new GetOneStudentResult(student);

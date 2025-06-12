@@ -3,7 +3,6 @@ package servlet.students;
 import java.io.IOException;
 
 import control.students.GetOneStudent;
-import control.students.GetOneStudentInput;
 import control.students.GetOneStudentResult;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -26,16 +25,16 @@ public class ShowOneStudentServlet extends HttpServlet {
     // すべてのサーブレットのすべてのメソッドにこの記述が必要。
     req.setCharacterEncoding("UTF-8");
 
+    // リクエストに含まれるパラメータの値を取得する。
     String id = req.getParameter("id");
-    GetOneStudentInput getOneStudentInput = new GetOneStudentInput(id);
 
     // ビジネスロジック層の窓口である、ECBパターンにおけるコントロールをインスタンス化する。
     GetOneStudent control = new GetOneStudent();
 
     try {
 
-      // コントロールに入力用のオブジェクトを渡して処理を実行し、その結果を得る。
-      GetOneStudentResult getOneStudentResult = control.execute(getOneStudentInput);
+      // コントロールにパラメータの値を渡して処理を実行し、その結果を得る。
+      GetOneStudentResult getOneStudentResult = control.execute(id);
 
       // 得た結果をリクエストスコープの属性に割り当てる。
       req.setAttribute("student", getOneStudentResult.student());
