@@ -16,6 +16,8 @@ import modelUtil.Failure;
 // この場合、`<コンテキストパス>/students/show-one`に対するリクエストを処理するサーブレットになる。
 @WebServlet(value = { "/students/show-one" })
 public class ShowOneStudentServlet extends HttpServlet {
+
+  // `<コンテキストパス>/students/show-one`に対するGETリクエストを処理する`doGet`メソッドを実装する。
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
