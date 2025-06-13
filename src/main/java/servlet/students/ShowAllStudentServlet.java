@@ -34,7 +34,7 @@ public class ShowAllStudentServlet extends HttpServlet {
       GetAllStudentResult getAllStudentResult = control.execute();
 
       // 得た結果をリクエストスコープの属性に割り当てる。
-      req.setAttribute("students", getAllStudentResult.students);
+      req.setAttribute("students", getAllStudentResult.students());
 
     } catch (Failure failure) {
 
