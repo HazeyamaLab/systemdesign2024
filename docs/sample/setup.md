@@ -31,7 +31,7 @@ exit
 ```sh
 # `database`データベースに`mysql`ユーザーとしてログインする。
 # `mysql`ユーザのパスワードは`password`です。
-mysql -h mysql -d database -u mysql -p
+mysql -h mysql -D database -u mysql -p
 ```
 
 ```sql
