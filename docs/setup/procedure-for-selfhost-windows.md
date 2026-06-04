@@ -27,6 +27,7 @@
     - タスクバーの`スタート`を右クリック→`ターミナル`または`Windows PowerShell`をクリックします。
 2. 次のスクリプトをPowerShellで実行してください。下記内容をコピーして、PowerShellのウィンドウを右クリックして貼り付けることもできます。すでにこれらのソフトウェアをインストールしている場合は、適宜スクリプトの内容を変更して実行してください。
     ```ps1
+    # 1行ずつ貼り付けてください
     # VSCode, Git, Docker Desktop をインストール
     winget install -e --id Microsoft.VisualStudioCode
     winget install -e --id Git.Git
@@ -76,7 +77,7 @@
 2. VSCode上で開発コンテナーを作成するために`Dev Containers`拡張機能をインストールします。`Ctrl+Shift+P`（`Ctrl`キーと`Shift`キーを押しながら`P`キーを押す）を押してコマンドパレットを開き、**`>`を消してから**`ext install ms-vscode-remote.remote-containers`と入力して`Enter`キーを押します。
 3. 開発コンテナーを作成します。
     1. `Ctrl+Shift+P`を押してコマンドパレットを開き、`Dev Containers: Clone Repository in Container Volume`と入力して`Enter`キーを押します（途中まで入力して同名の項目を選択しても構いません）。
-    2. 入力欄に`https://github.com/HazeyamaLab/systemdesign2024`と入力して`Enter`キーを押します。
+    2. 入力欄に`https://github.com/HazeyamaLab/systemdesign2024`と入力して`Enter`キーを押します。（このURLをコピーするためにVSCode以外のウィンドウを触ると、コマンドパレットが閉じられてしまうので、注意してください）
     3. 開発コンテナーの作成が完了するまで待ちます。開発コンテナーの作成には数分間かかることがあります。作成に成功すると自動的に開発コンテナーに接続され、画面左下のリモートボタンに`Dev Container: systemdesign2024`と表示されます。
 
 ## ℹ️ 開発環境の使用方法
