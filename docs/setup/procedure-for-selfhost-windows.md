@@ -21,7 +21,7 @@
 ### 1. 必要なソフトウェアのインストール
 
 > [!NOTE]
-> 2024年度に櫨山研究室に配属された学生はこの手順を行う必要はありません。
+> 2024年度以降に櫨山研究室に配属された学生はこの手順を行う必要はありません。
 
 1. ターミナルまたはWindows PowerShellを起動します。
     - タスクバーの`スタート`を右クリック→`ターミナル`または`Windows PowerShell`をクリックします。
@@ -36,11 +36,11 @@
     ```
 3. インストールが完了したら（完了すると最後の行の左端が`PS C:\Users\user>`のようなプロンプトに戻ります）、インストールしたアプリが正しく動作することを確認します。
     - VSCode: `スタート`→`すべてのアプリ`内に`Visual Studio Code`が追加されていて、起動できることを確認します。
-    - Git: 新しいPowerShellのウィンドウを開き、次のコマンドをPowerShellで実行します。正しく動作する場合は`git version 2.44.0`のように表示されます。
+    - Git: 新しいPowerShellのウィンドウを開き、次のコマンドをPowerShellで実行します。正しく動作する場合は`git version 2.54.0`のように表示されます。
         ```ps1
         git -v
         ```
-    - Docker Desktop: 新しいPowerShellのウィンドウを開き、次のコマンドをPowerShellで実行します。正しく動作する場合は`Docker version 26.1.1, build 4cf5afa`のように表示されます。
+    - Docker Desktop: 新しいPowerShellのウィンドウを開き、次のコマンドをPowerShellで実行します。正しく動作する場合は`Docker version 29.5.2, build v29.5.2`のように表示されます。
         ```ps1
         docker -v
         ```
