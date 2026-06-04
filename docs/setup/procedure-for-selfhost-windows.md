@@ -48,28 +48,17 @@
 
 ### 2. Docker Desktopを起動・設定する
 
-1. Docker DesktopはWSL（Windows Subsystem for Linux）を使用します。WSLがPCのメモリ等を消費しすぎないように、WSLの設定ファイルを作成します。
-    1. VSCodeを起動します。
-        - タスクバーの`スタート`→`すべてのアプリ`→`Visual Studio Code`をクリックします。
-    2. VSCodeの画面左上のメニューバーの`File`（`ファイル`）→`New Text File`（`新しいテキストファイル`）の順にクリックして新しいファイルを作成します。
-    3. ファイルの内容を次のようにします。ここでは、WSLが使用できるメモリのサイズを3.5GB、ページファイルのサイズ（スワップ領域）を0GBに制限しています。
-        ```
-        [wsl2]
-        memory=3.5GB
-        swap=0GB
-        ```
-    4. 画面左上のメニューバーの`File`（`ファイル`）→`Save as…`（`名前を付けて保存…`）をクリックしてファイルを保存します。
-        - 保存する場所: `%USERPROFILE%`（いわゆるユーザフォルダ。`Save as`ダイアログの上部のパスバーに`%USERPROFILE%`と入力して`Enter`キーを押すとユーザフォルダに移動することができます）
-        - ファイル名: `.wslconfig`
-        - ファイルの種類: `No Extension`（`なし`）
+1. Docker DesktopはWSL（Windows Subsystem for Linux）を使用します。WSLがPCのメモリ等を消費しすぎないように、WSLを設定します。
+    1. WSL Settingsを起動します。タスクバーの`スタート`→`すべてのアプリ`→`WSL Settings`をクリックします。
+    2. 左側メニューの`メモリとプロセッサ`をクリックします。
+    3. `メモリ サイズ`を`3584 MB`にします。
+    4. `スワップ サイズ`を`0 MB`にします。
+    5. 画面右下の`変更の適用`をクリックします。`WSL のシャットダウンが必要です`と表示された場合は`WSL を今すぐシャットダウン`をクリックしてWSLをシャットダウンします。
 2. PCを再起動します。タスクバーの`スタート`→`電源`→`再起動`をクリックします。
 3. Docker Desktopを起動します。
     - タスクバーの`スタート`→`すべてのアプリ`→`Docker Desktop`をクリックします。
     - Dockerアカウントへのログインを求める画面が表示されることがありますが、Dockerアカウントを作成したりログインしたりする必要はありません。
     - アンケートが表示されることがありますが、答える必要はありません。
-
-> [!NOTE]
-> `.wslconfig`はメモ帳（`notepad.exe`）ではなくVSCodeで作成することをおすすめします。`.wslconfig`はBOMなしのテキストファイルとして作成される必要がありますが、Windowsのバージョンによってはメモ帳でBOMなしのテキストファイルを作成できないことがあります。
 
 ### 3. 開発コンテナーを作成し、作成した開発コンテナーに接続する
 
@@ -115,5 +104,5 @@ Docker Desktopを起動してからVSCodeを開発コンテナーに接続しま
 
 ### 🧐 開発コンテナーに割り当てられているメモリが足りない。「`Reconnecting to Devcontainer…`」が頻発する。
 
-`.wslconfig`を編集し、WSLが使用できるメモリのサイズの上限を引き上げてください。[2. Docker Desktopを起動・設定する](#2-docker-desktopを起動設定する)の手順を参考にしてください。
-`.wslconfig`の編集後、設定の変更を反映するには、一度[Docker DesktopとWSLを終了する](#docker-desktopおよびwslを終了するには)必要があります。
+WSL Settingsで、WSLが使用できるメモリのサイズの上限を引き上げてください。[2. Docker Desktopを起動・設定する](#2-docker-desktopを起動設定する)の手順を参考にしてください。
+WSL Settingsの変更を反映するには、一度[Docker DesktopとWSLを終了する](#-docker-desktopおよびwslを終了するには)必要があります。
