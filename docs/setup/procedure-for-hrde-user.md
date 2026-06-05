@@ -77,13 +77,12 @@ TAが巡回しますので、櫨研リモート開発環境のユーザを作成
     1. 手順2の画面の右上`Create Workspace`→`開発コンテナー`をクリックします。
     2. 表示された画面に次の情報を入力します。
         - `Workspace Name`: 好きな文字列を入力してください。アルファベット大文字、アルファベット小文字、数字と`-`を使用できます。
+        - `Git リポジトリの名前`: 今回は`HazeyamaLab/systemdesign2024.git`と入力します。
+        - `Git ブランチの名前`: 今回は`main`と入力します。
+        - `devcontainer.json へのパス`: 今回は`.devcontainer/systemdesign2024-hrde/devcontainer.json`と入力します。
         - `Docker レジストリのホスト名`: 今回は`https://emerald.u-gakugei.ac.jp:5000`と入力します。
         - `Docker レジストリのユーザー名`: リモート開発環境の利用者に個別で連絡します。
         - `Docker レジストリのパスワード`: リモート開発環境の利用者に個別で連絡します。
-        - `Git リポジトリのオーナーの名前`: 今回は`HazeyamaLab`と入力します。
-        - `Git リポジトリの名前`: 今回は`systemdesign2024`と入力します。
-        - `Git ブランチの名前`: 今回は`main`と入力します。
-        - `devcontainer.json へのパス`: 今回は`.devcontainer/systemdesign2024-hrde/devcontainer.json`と入力します。
     3. 入力が終わったら画面右下`Create Workspace`ボタンをクリックします。
 4. 開発コンテナーの作成が完了するまで待ちます。開発コンテナーの作成には数分間かかることがあります。開発コンテナーの作成に成功すると、画面中央に`VS Code Desktop`ボタンが表示されます。
 
