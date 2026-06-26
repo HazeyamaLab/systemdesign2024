@@ -3,7 +3,9 @@
 {
   "name": "systemdesign2024 (default)",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "dockerComposeFile": ["compose.yaml"],
+  "dockerComposeFile": [
+    "compose.yaml"
+  ],
   "service": "devcontainer",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "overrideCommand": true,
@@ -12,8 +14,8 @@
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [
-    // 8080,
-    // "adminer:8080"
+    8080,
+    "adminer:8080"
   ],
 
   // Use 'postCreateCommand' to run commands after the container is created.
@@ -24,10 +26,10 @@
     "vscode": {
       "extensions": [
         "samuel-weinhardt.vscode-jsp-lang",
-        "vscjava.vscode-java-pack",
-      ],
-    },
-  },
+        "vscjava.vscode-java-pack"
+      ]
+    }
+  }
 
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
   // "remoteUser": "root"
