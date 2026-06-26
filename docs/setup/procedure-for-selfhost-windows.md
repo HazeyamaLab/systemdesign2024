@@ -76,11 +76,8 @@
     3. 開発コンテナーの作成が完了するまで待ちます。開発コンテナーの作成には数分間かかることがあります。作成に成功すると自動的に開発コンテナーに接続され、ウィンドウ左下のリモートボタンに`Dev Container: systemdesign2024`と表示されます。
 
 > [!NOTE]
-> 過去にWSLでUbuntuを利用していた場合、`An error occured setting up the container`（`コンテナーの設定中にエラーが発生しました`）というエラーが発生し、開発コンテナーの作成に失敗することがあります。Docker Desktopが過去にインストールしたUbuntuと連携するように設定を変更してください。
-> 1. Docker Desktopを起動します。
-> 2. Docker Desktopのウィンドウ右上の`Settings`（`⚙️`のようなアイコン）をクリックします。
-> 3. ウィンドウ左側の`Resources`→ウィンドウ右側の画面の`WSL Integrations`タブ→`Enable WSL Integration`にチェックを入れます。
-> 4. ウィンドウ右下の`Apply & Restart`をクリックします。
+> 過去にWSLでUbuntuを利用していた場合、`An error occured setting up the container`（`コンテナーの設定中にエラーが発生しました`）というエラーが発生し、開発コンテナーの作成に失敗することがあります。
+> その場合は、[VSCodeの設定「dev.containers.mountWaylandSocket」](vscode://settings/dev.containers.mountWaylandSocket)の値を`false`にしてください（チェックを外してください）。
 
 ## ℹ️ 開発環境の使用方法
 
