@@ -60,6 +60,12 @@
     - Dockerアカウントへのログインを求める画面が表示されることがありますが、Dockerアカウントを作成したりログインしたりする必要はありません。
     - アンケートが表示されることがありますが、答える必要はありません。
 
+> [!NOTE]
+> WSL Settingsを起動するときに`The feature you are trying to use is on a network resource that is unavailable. …`というダイアログが表示されることがあります。その場合は一度WSL Settingsを終了させ、ターミナルで次のコマンドを実行してください。
+> ```ps1
+> wsl ---update
+> ```
+
 ### 3. 開発コンテナーを作成し、作成した開発コンテナーに接続する
 
 1. VSCodeを起動します。
@@ -68,6 +74,13 @@
     1. `Ctrl+Shift+P`を押してコマンドパレットを開き、`Dev Containers: Clone Repository in Container Volume`と入力して`Enter`キーを押します（途中まで入力して同名の項目を選択しても構いません）。
     2. 入力欄に`https://github.com/HazeyamaLab/systemdesign2024`と入力して`Enter`キーを押します。（このURLをコピーするためにVSCode以外のウィンドウを触ると、コマンドパレットが閉じられてしまうので、注意してください）
     3. 開発コンテナーの作成が完了するまで待ちます。開発コンテナーの作成には数分間かかることがあります。作成に成功すると自動的に開発コンテナーに接続され、ウィンドウ左下のリモートボタンに`Dev Container: systemdesign2024`と表示されます。
+
+> [!NOTE]
+> 過去にWSLでUbuntuを利用していた場合、`An error occured setting up the container`（`コンテナーの設定中にエラーが発生しました`）というエラーが発生し、開発コンテナーの作成に失敗することがあります。Docker Desktopが過去にインストールしたUbuntuと連携するように設定を変更してください。
+> 1. Docker Desktopを起動します。
+> 2. Docker Desktopのウィンドウ右上の`Settings`（`⚙️`のようなアイコン）をクリックします。
+> 3. ウィンドウ左側の`Resources`→ウィンドウ右側の画面の`WSL Integrations`タブ→`Enable WSL Integration`にチェックを入れます。
+> 4. ウィンドウ右下の`Apply & Restart`をクリックします。
 
 ## ℹ️ 開発環境の使用方法
 
@@ -104,11 +117,10 @@ Docker Desktopを起動してからVSCodeを開発コンテナーに接続しま
 
 ### 🧐 開発コンテナーに割り当てられているメモリが足りない。「`Reconnecting to Devcontainer…`」が頻発する。
 
-- WSL Settingsで、WSLが使用できるメモリのサイズの上限を引き上げてください。[2. Docker Desktopを起動・設定する](#2-docker-desktopを起動設定する)の手順を参考にしてください。WSL Settingsの変更を反映するには、一度[Docker DesktopとWSLを終了する](#-docker-desktopおよびwslを終了するには)必要があります。
+- WSL Settingsで、WSLが使用できるメモリサイズかスワップサイズの上限を引き上げてください。スワップサイズは2048 MBはあってもよいでしょう。[2. Docker Desktopを起動・設定する](#2-docker-desktopを起動設定する)の手順を参考にしてください。WSL Settingsの変更を反映するには、一度[Docker DesktopとWSLを終了する](#-docker-desktopおよびwslを終了するには)必要があります。
 - また、不要な拡張機能を無効化するのも効果的です。
     1. VSCodeのウィンドウ左側の`Extensions`（`拡張機能`）をクリックします。
     2. `Dev Container: …`内の以下の拡張機能を右クリック→`Disable`（`無効にする`）をクリックします。
         - Gradle for Java
         - ESLint
         - Maven for Java
-
